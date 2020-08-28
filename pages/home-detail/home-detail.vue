@@ -33,7 +33,7 @@
 					v-for="comment in comments"
 					:key="comment.comment_id"
 				>
-          <comment-box :comment="comment"></comment-box>
+          <comment-box :comment="comment" @reply="reply"></comment-box>
 				</view>
 			</view>
 		</view>
@@ -82,7 +82,8 @@
 				comments: [],
 				commentValues: '',
 				formData: {},
-				noData: "<p style='text-align: center; color: #666'>详情加载中...</p>"
+				noData: "<p style='text-align: center; color: #666'>详情加载中...</p>",
+				replyFormData: {}
 			}
 		},
     onLoad(options) {
@@ -100,8 +101,9 @@
 			},
 			closeComment() {
 				this.$refs.popup.close()
+				this.replyFormData = {}
 			},
-			submitComment() {
+			submitComment(obj) {
 				const value = this.commentValues.trim()
 				if (value.length === 0) {
 					uni.showToast({
@@ -110,17 +112,28 @@
 					})
 					return
 				}
-				uni.showLoading()
-				this.$api.update_comment({
+				
+				this.setUpdateComment({
+					content: this.commentValues,
+					...this.replyFormData
+				})
+			},
+			setUpdateComment(data) {
+				const formData = {
 					article_id: this.formData._id,
-					content: this.commentValues
-				}).then(res => {
+					...data
+				}
+				console.log(formData)
+				uni.showLoading()
+				this.$api.update_comment(formData).then(res => {
 					this.commentValues = ''
 					uni.hideLoading()
 					uni.showToast({
 						title: '提交成功'
 					})
+					this.getComments()
 					this.closeComment()
+					this.replyFormData = {}
 				}).catch(() => {
 					uni.hideLoading()
 				})
@@ -139,6 +152,18 @@
 				}).then(res => {
 					this.formData = res.data[0]
 				})
+			},
+			reply(e) {
+				const { comment_id, reply_id } = e.comment
+				this.replyFormData = {
+					comment_id: comment_id,
+					is_reply: e.is_reply
+				}
+				if (reply_id) {
+					this.replyFormData.reply_id = reply_id
+				}
+				this.openComment()
+				console.log('reply-e', this.replyFormData)
 			}
 		}
 	}

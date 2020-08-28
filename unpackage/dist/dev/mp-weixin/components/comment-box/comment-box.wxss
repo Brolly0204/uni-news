@@ -63,9 +63,35 @@
   font-size: 14px;
   color: #333333;
 }
+.comment-box-header__info-title .reply-text {
+  margin: 0 10px;
+  font-weight: bold;
+  color: #000000;
+}
 .comment-box-content {
   margin-top: 10px;
   font-size: 14px;
   color: #000000;
+}
+.comment-box-content .comments-info {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  margin-top: 15px;
+}
+.comment-box-content .comments-info .comments-button {
+  padding: 2px 10px;
+  font-size: 12px;
+  color: #999999;
+  border-radius: 20px;
+  border: 1px solid #cccccc;
+}
+.comment-box-content .comments-reply {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  margin: 15px 0;
+  padding: 0 10px;
+  border: 1px solid #eeeeee;
 }
 
