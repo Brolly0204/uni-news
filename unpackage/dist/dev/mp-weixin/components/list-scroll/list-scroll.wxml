@@ -1,0 +1,1 @@
+<scroll-view class="list-scroll" scroll-y="{{true}}" lower-threshold="80" data-event-opts="{{[['scrolltolower',[['loadMore',['$event']]]]]}}" bindscrolltolower="__e"><view class="list-wrapper"><slot></slot></view></scroll-view>

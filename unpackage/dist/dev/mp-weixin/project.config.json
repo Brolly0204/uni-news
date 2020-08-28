@@ -1,0 +1,60 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "",
+	"appid": "wxb3299d10aec73790",
+	"projectname": "uni-news",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "home-search",
+					"pathName": "pages/home-search/home-search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "home-label",
+					"pathName": "pages/home-label/home-label",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "home-detail",
+					"pathName": "pages/home-detail/home-detail",
+					"scene": null
+				}
+			]
+		}
+	}
+}
